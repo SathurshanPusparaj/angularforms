@@ -9,9 +9,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginReactiveComponent implements OnInit {
 
+  email = new FormControl('', {validators: [Validators.required, Validators.email]});
+
+  password = new FormControl('', {validators: [Validators.required, Validators.minLength(8)]});
+
   form = new FormGroup({
-    email: new FormControl('', {validators: [Validators.required, Validators.email]}),
-    password: new FormControl('', {validators: [Validators.required, Validators.minLength(8)]}),
+    email: this.email,
+    password: this.password,
   });
 
 
