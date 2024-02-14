@@ -20,7 +20,7 @@ One way directional data binding
 Two way directional data binding
 [(ngModel)]="val.email"
 
-
+```
 //Form validation directive
 @Directive({
     selector: "[passwordStrength]",
@@ -53,14 +53,18 @@ export function createPasswordStrengthValidator(): ValidatorFn {
         return !passwordValid ? {passwordStrength:true} : null;
     }
 }
+```
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 impure pipe
 
+```
 <ng-container *ngIf="password.errors | onlyOneError:['minlength','passwordStrength'] as error">
+
     <div class="field-message"  *ngIf="error.minlength">Your password must have minimum {{ error.minlength.requiredLength }} chars, but it only has {{ error.minlength.actualLength }
     </div>
+
     <div class="field-message" *ngIf="error.passwordStrength">Your password must have lower case, upper case and numeric characters.</div>
 </ng-container>
 
@@ -87,3 +91,4 @@ export class OnlyOneErrorPipe implements PipeTransform {
     }
 
 }
+```
