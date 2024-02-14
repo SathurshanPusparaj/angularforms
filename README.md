@@ -92,3 +92,38 @@ export class OnlyOneErrorPipe implements PipeTransform {
 
 }
 ```
+
+### Reactive forms
+```
+form group builder
+initialvalue, sync validators, async validators
+
+ form = this.fb.group({
+    email: ['', {
+      validators: [Validators.required, Validators.email],
+      updateOn: 'blur'
+    }],
+    password: ['', [
+      Validators.required, 
+      Validators.minLength(8),
+      createPasswordStrengthValidator()]]
+  })
+
+[formGroup]="form"
+formControlName="password"
+
+  <form class="login-form data-form" [formGroup]="form">
+      <mat-form-field>
+        <input matInput type="email" name="email"
+               placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">
+        Login
+      </button>
+    </form>
+ ``` 
