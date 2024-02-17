@@ -127,3 +127,40 @@ formControlName="password"
       </button>
     </form>
  ``` 
+
+ FormNonNullable
+ ```
+form = this.fb.group({
+    email: this.fb.nonNullable.control('', {
+      validators: [Validators.required, Validators.email],
+      updateOn: 'blur'
+    }),
+    password: ['', [
+      Validators.required, 
+      Validators.minLength(8),
+      createPasswordStrengthValidator()]]
+  })
+
+reset form
+    this.form.reset();
+    BY DEFAULT -> It change the email to null,  this.fb.nonNullable.control assigns the empty string
+
+OR ELSE
+
+constructor(private fb: NonNullableFormBuilder) {
+
+}
+
+form = this.fb.group({
+    email: ['', {
+      validators: [Validators.required, Validators.email],
+      updateOn: 'blur'
+    }],
+    password: ['', [
+      Validators.required, 
+      Validators.minLength(8),
+      createPasswordStrengthValidator()]]
+  })
+
+
+ ```

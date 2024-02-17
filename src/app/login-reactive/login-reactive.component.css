@@ -15,4 +15,7 @@
   margin-bottom: 10px;
 }
 
-
+.field-message {
+  font-size: 12px;
+  color: red;
+}

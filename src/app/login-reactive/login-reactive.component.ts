@@ -31,10 +31,10 @@ export class LoginReactiveComponent implements OnInit {
   }); */
 
   form = this.fb.group({
-    email: ['', {
+    email: this.fb.nonNullable.control('', {
       validators: [Validators.required, Validators.email],
       updateOn: 'blur'
-    }],
+    }),
     password: ['', [
       Validators.required, 
       Validators.minLength(8),
@@ -44,11 +44,24 @@ export class LoginReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
 
-
   }
 
   ngOnInit() {
 
   }
 
+  get email() {
+    return this.form.controls['email'];
+  }
+
+  get password() {
+    return this.form.controls['password'];
+  }
+
+  login() {
+    const formValue = this.form.value;
+
+    console.log(formValue.email);
+    console.log(formValue.password);
+  }
 }
